@@ -48,6 +48,9 @@ mvn spring-boot:run
 Below is the link where the **updated collection** of endpoints created for this application is located, 
 to make use of them it is necessary to use the [postman](https://www.postman.com/) application and import [this file](https://github.com/MarceAvend/SpringBootMusicApp/blob/main/music_app_end_points.postman_collection.json)
 
+You can also use swagger ui to see and make use of the created endpoints, after executing the application the path will be activated and you can make use of the endpoints of the application.
+http://localhost:8080/MusicAppApplication/swagger-ui.html#/
+
 
 
 
