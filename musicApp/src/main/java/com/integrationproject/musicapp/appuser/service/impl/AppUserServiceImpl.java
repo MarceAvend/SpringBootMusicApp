@@ -1,9 +1,9 @@
-package com.integrationproject.musicapp.service.impl;
+package com.integrationproject.musicapp.appuser.service.impl;
 
-import com.integrationproject.musicapp.dto.AppUserDTO;
-import com.integrationproject.musicapp.model.AppUser;
-import com.integrationproject.musicapp.repository.IAppUserRepository;
-import com.integrationproject.musicapp.service.interfaces.AppUserService;
+import com.integrationproject.musicapp.appuser.service.interfaces.AppUserService;
+import com.integrationproject.musicapp.appuser.dto.AppUserDTO;
+import com.integrationproject.musicapp.appuser.model.AppUser;
+import com.integrationproject.musicapp.appuser.repository.IAppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +28,11 @@ public class AppUserServiceImpl implements AppUserService {
             return appUser.get();
         }
         return null;
+    }
+
+    @Override
+    public AppUser findUserByName(String email) {
+        return this.appUserRepository.findByName(email);
     }
 
     @Override

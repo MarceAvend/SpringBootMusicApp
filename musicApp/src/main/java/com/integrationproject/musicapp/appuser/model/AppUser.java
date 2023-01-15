@@ -1,4 +1,4 @@
-package com.integrationproject.musicapp.model;
+package com.integrationproject.musicapp.appuser.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

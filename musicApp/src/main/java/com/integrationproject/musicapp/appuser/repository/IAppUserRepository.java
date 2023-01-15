@@ -1,6 +1,6 @@
-package com.integrationproject.musicapp.repository;
+package com.integrationproject.musicapp.appuser.repository;
 
-import com.integrationproject.musicapp.model.AppUser;
+import com.integrationproject.musicapp.appuser.model.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -15,4 +15,6 @@ public interface IAppUserRepository extends JpaRepository<AppUser, Long> {
 
     @Query(value = "SELECT u FROM AppUser u WHERE u.id =:aId")
     Optional<AppUser> findById(Long aId);
+
+    AppUser findByName(String email);
 }
