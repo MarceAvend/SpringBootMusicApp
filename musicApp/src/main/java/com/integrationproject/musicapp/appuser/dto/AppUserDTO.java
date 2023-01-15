@@ -1,4 +1,4 @@
-package com.integrationproject.musicapp.dto;
+package com.integrationproject.musicapp.appuser.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;

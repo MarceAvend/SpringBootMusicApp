@@ -1,8 +1,8 @@
-package com.integrationproject.musicapp.controller;
+package com.integrationproject.musicapp.appuser.controller;
 
-import com.integrationproject.musicapp.dto.AppUserDTO;
-import com.integrationproject.musicapp.model.AppUser;
-import com.integrationproject.musicapp.service.interfaces.AppUserService;
+import com.integrationproject.musicapp.appuser.dto.AppUserDTO;
+import com.integrationproject.musicapp.appuser.model.AppUser;
+import com.integrationproject.musicapp.appuser.service.interfaces.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,9 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class AppUserController {
 
     private AppUserService appUserService;
@@ -24,6 +25,7 @@ public class AppUserController {
         if (appUserList == null || appUserList.isEmpty()) {
             return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
         }
+        System.out.println("ESTA A PUNTO DE RESPOINDER");
         return new ResponseEntity<>(appUserList, HttpStatus.OK);
     }
 
