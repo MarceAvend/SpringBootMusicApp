@@ -19,6 +19,6 @@ public interface AppUserService {
 
     AppUser updateAppUser(AppUserDTO appUserDTO);
 
-    void deleteAppUser(AppUser appUser);
+    Boolean deleteAppUser(Long idAppUser);
 
 }

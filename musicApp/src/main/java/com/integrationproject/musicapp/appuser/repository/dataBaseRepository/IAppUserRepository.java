@@ -1,4 +1,4 @@
-package com.integrationproject.musicapp.appuser.repository;
+package com.integrationproject.musicapp.appuser.repository.dataBaseRepository;
 
 import com.integrationproject.musicapp.appuser.model.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +17,6 @@ public interface IAppUserRepository extends JpaRepository<AppUser, Long> {
     Optional<AppUser> findById(Long aId);
 
     AppUser findByName(String email);
+
+    Optional<AppUser> findUserByName(String email);
 }

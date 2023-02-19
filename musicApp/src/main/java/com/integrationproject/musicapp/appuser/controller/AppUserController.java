@@ -30,7 +30,7 @@ public class AppUserController {
     }
 
     @GetMapping("/findById")
-    public ResponseEntity<AppUser> findTipoLiquidadorNominaPorPersona(
+    public ResponseEntity<AppUser> findById(
             @RequestParam(name = "id")Long idUser
     ){
         AppUser appUser = appUserService.findById(idUser);
@@ -67,7 +67,7 @@ public class AppUserController {
         if (appUserBD == null) {
             return new ResponseEntity<>(false,HttpStatus.NO_CONTENT);
         }
-        this.appUserService.deleteAppUser(appUserBD);
+        this.appUserService.deleteAppUser(appUserBD.getId());
         return new ResponseEntity<>(true,HttpStatus.OK);
 
     }

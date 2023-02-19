@@ -1,7 +1,7 @@
 package com.integrationproject.musicapp.auth.service;
 
 import com.integrationproject.musicapp.appuser.model.AppUser;
-import com.integrationproject.musicapp.appuser.repository.IAppUserRepository;
+import com.integrationproject.musicapp.appuser.repository.dataBaseRepository.IAppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
