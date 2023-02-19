@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "4afbda0b-6d8a-4601-933f-abaa2e7d2fb1",
+		"name": "music_app_end_points",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24136369"
+	},
+	"item": [
+		{
+			"name": "LogIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"La respuesta es correcto\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"El contenido de la respuesta es correcto\", function () {\r",
+							"     pm.expect(jsonData[\"jwt\"]).to.not.eq(null);\r",
+							"     pm.expect(jsonData[\"expirationJwt\"]).to.not.eq(null);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Se cargo el token en la variable de coleccion\", function () {\r",
+							"     pm.collectionVariables.set('token', jsonData.jwt);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"marcela\",\r\n  \"password\": \"marcela\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{SERVER_PATH}}{{APP_PATH}}/auth",
+					"protocol": "http",
+					"host": [
+						"{{SERVER_PATH}}{{APP_PATH}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllAppUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"La peticion tiene cargado el token\", function () {\r",
+							"     pm.collectionVariables.get('token');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{SERVER_PATH}}{{APP_PATH}}/users/all",
+					"protocol": "http",
+					"host": [
+						"{{SERVER_PATH}}{{APP_PATH}}"
+					],
+					"path": [
+						"users",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"La peticion tiene cargado el token\", function () {\r",
+							"     pm.collectionVariables.get('token');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{SERVER_PATH}}{{APP_PATH}}/users/findById?id=10",
+					"protocol": "http",
+					"host": [
+						"{{SERVER_PATH}}{{APP_PATH}}"
+					],
+					"path": [
+						"users",
+						"findById"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAppUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"La peticion tiene cargado el token\", function () {\r",
+							"     pm.collectionVariables.get('token');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"marcela3\",\r\n    \"password\": \"marcela3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{SERVER_PATH}}{{APP_PATH}}/users",
+					"protocol": "http",
+					"host": [
+						"{{SERVER_PATH}}{{APP_PATH}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editAppUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"La peticion tiene cargado el token\", function () {\r",
+							"     pm.collectionVariables.get('token');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 10,\r\n    \"name\": \"marcela10b\",\r\n    \"password\": \"marcela10b\",\r\n    \"isAdmin\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{SERVER_PATH}}{{APP_PATH}}/users",
+					"protocol": "http",
+					"host": [
+						"{{SERVER_PATH}}{{APP_PATH}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAppUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"La peticion tiene cargado el token\", function () {\r",
+							"     pm.collectionVariables.get('token');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{SERVER_PATH}}{{APP_PATH}}/users/10",
+					"protocol": "http",
+					"host": [
+						"{{SERVER_PATH}}{{APP_PATH}}"
+					],
+					"path": [
+						"users",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "SERVER_PATH",
+			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "APP_PATH",
+			"value": "/MusicAppApplication/api",
+			"type": "string"
+		}
+	]
+}
