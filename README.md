@@ -7,6 +7,63 @@
 <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot" />
 <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white"/>
 <img src="https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" /> 
+<img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" /> 
+<img src="https://img.shields.io/badge/Junit5-25A162?style=for-the-badge&logo=junit5&logoColor=white" /> 
+
+## Video showing the functionalities created
+
+https://youtu.be/rAwOX44VbCQ
+
+
+
+## Project features
+
+- User management and authentication microservice
+- Detailed design focused on low coupling and high cohesion
+- Functionalities with unit test coverage testing both the web layer and the services
+- Secure endpoints, protected by JWT with only public access for the login who creates the token.
+
+
+## Project structure
+```
+SpringBootMusicApp/
+└── musicApp/
+    └── src/
+        └── main/
+            ├── java/
+            │   ├── com.integrationproject.musicapp/
+            │   │   ├── appuser/
+            │   │   │   ├── controller/
+            │   │   │   ├── dto/
+            │   │   │   ├── model/
+            │   │   │   ├── repository/
+            │   │   │   └── service/
+            │   │   ├── auth/
+            │   │   │   ├── configuration/
+            │   │   │   ├── controller/
+            │   │   │   ├── dto/
+            │   │   │   ├── security/
+            │   │   │   └── service/
+            │   │   ├── swagger/
+            │   │   │   └── swaggerConfiguration
+            │   │   └── MusicAppAplication
+            │   └── resources/
+            │       └── aplication.properties
+            └── test/
+                └── java/
+                    └── com.integrationproject.music.app/
+                        └── appuser/
+                            ├── service/
+                            │   └── AppuserServiceImplTests
+                            └── controller/
+                                └── MusicAppAplicationTests
+                  
+```
+
+
+##  Workflow used: Gitflow
+![03 Release branches](https://user-images.githubusercontent.com/116927440/219958934-005c701c-23dd-4280-a4ba-66f30486107f.svg)
+
 
 
 ## Requirements
@@ -17,20 +74,19 @@ For building and running the application you need:
 - [Maven 4](https://maven.apache.org)
 - [PostgreSQL 14.4](https://www.postgresql.org/)
 
-java
-/*
+**Java**
+
 database configuration, make sure it is the same or modify the application.properties file
 with your personal configuration, just keep the musicdb database
-*/
+
 spring.datasource.url= jdbc:postgresql://localhost:5432/musicdb?serverTimezone=America/Los_Angeles
 spring.datasource.username= postgres
 spring.datasource.password= postgres
 
 
-sql
-/*
+**SQL**
+
 You must run this command in a console with the postgress database so that the tables are created when you start the application
-*/
 create database musicdb;
 
 
